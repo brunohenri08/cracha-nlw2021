@@ -17,9 +17,10 @@ body {
 }
 
 main {
-  background: url(./images/background.svg);
-  width: 375px;
-  height: 812px;
+  background: url(./images/background.svg) no-repeat center/cover;
+  width: 100vw;
+  min-height: 812px;
+  height: 100vh;
 }
 
 .container {
@@ -32,7 +33,7 @@ main {
 
 .avatar {
   width: 10rem;
-  margin: 16rem 4.5rem 0; /* Esse deu a altura da margem correta.*/
+  margin: 16.23rem 4.5rem 0; /* Esse deu a altura da margem correta.*/
   position: relative;
 }
 
@@ -41,6 +42,8 @@ main {
   top: -5px;
   left: 5px;
   z-index: 1;
+  transform: rotate(180deg);
+  animation: anim 5s infinite;
 }
 
 .avatar > img {
@@ -49,7 +52,7 @@ main {
   object-fit: cover;
 
   clip-path: polygon(50% 0, 96% 28%, 96% 75%, 50% 100%, 2% 75%, 2% 28%);
-  /*precisou fazer alguns ajustes do original pra alizar o poligrafo*/
+  /*precisou fazer alguns ajustes do original pra alinhar o poligrafo*/
 }
 
 h1 {
@@ -78,4 +81,24 @@ ul {
   display: flex;
   gap: 0.5rem;
   justify-content: center;
+}
+/*animação no selo*/
+@keyframes anim {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+/* versão para tablet e desktop*/
+@media screen and (min-width: 720px) {
+  main {
+    background: url(./images/Desktop.svg) no-repeat center/cover;
+  }
+  .avatar {
+    margin: 19rem 4.5rem 0;
+  } /* Esse deu a altura da margem correta em tela cheia.*/
 }
